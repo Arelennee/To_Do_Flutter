@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 100),
             OpenContainer(
               transitionType: ContainerTransitionType.fadeThrough,
-              transitionDuration: Duration(milliseconds: 450),
+              transitionDuration: Duration(milliseconds: 300),
               closedColor: Color(0xFF1E1E2E),
               closedBuilder:
                   (context, openContainer) => SizedBox(
@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 20),
             OpenContainer(
               transitionType: ContainerTransitionType.fadeThrough,
-              transitionDuration: Duration(milliseconds: 450),
+              transitionDuration: Duration(milliseconds: 300),
               closedColor: Color(0xFF1E1E2E),
               closedBuilder:
                   (context, openContainer) => SizedBox(
