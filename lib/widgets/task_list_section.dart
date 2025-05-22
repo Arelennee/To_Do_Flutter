@@ -42,7 +42,7 @@ class TaskListSection extends StatelessWidget {
         ),
         SizedBox(height: 10),
 
-        ...tasks.map((task) => TaskRow(task: task)).toList(),
+        ...tasks.map((task) => TaskRow(task: task)),
       ],
     );
   }
