@@ -99,7 +99,7 @@ class MainInterface extends StatelessWidget {
               SizedBox(height: 40),
 
               // TASK LIST SECTION
-              TaskListSection(tasks: tareas),
+              TaskListSection(initialTasks: tareas),
             ],
           ),
         ),
@@ -107,3 +107,4 @@ class MainInterface extends StatelessWidget {
     );
   }
 }
+@

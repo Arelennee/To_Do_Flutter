@@ -27,11 +27,11 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
-
-      final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text,
-      );
+      final UserCredential userCredential = await _auth
+          .signInWithEmailAndPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text,
+          );
 
       final uid = userCredential.user?.uid;
 
@@ -45,9 +45,10 @@ class _LoginPageState extends State<LoginPage> {
         );
       } else {
         setState(() {
-          _errorMessage = 'Este usuario no tiene una cuenta registrada en Firestore.';
+          _errorMessage =
+              'Este usuario no tiene una cuenta registrada en Firestore.';
         });
-        await _auth.signOut(); 
+        await _auth.signOut();
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -76,10 +77,7 @@ class _LoginPageState extends State<LoginPage> {
               const Text(
                 "Welcome Back!",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Color(0xFFA0A0A0),
-                ),
+                style: TextStyle(fontSize: 40, color: Color(0xFFA0A0A0)),
               ),
               if (_errorMessage != null)
                 Padding(
@@ -94,8 +92,16 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.all(12),
                 child: Column(
                   children: [
-                    _buildInputField("Enter your Email:", _emailController, false),
-                    _buildInputField("Enter your Password:", _passwordController, true),
+                    _buildInputField(
+                      "Enter your Email:",
+                      _emailController,
+                      false,
+                    ),
+                    _buildInputField(
+                      "Enter your Password:",
+                      _passwordController,
+                      true,
+                    ),
                   ],
                 ),
               ),
@@ -110,9 +116,10 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: _isLoading
-                    ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('Login', style: TextStyle(fontSize: 20)),
+                child:
+                    _isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text('Login', style: TextStyle(fontSize: 20)),
               ),
             ],
           ),
@@ -121,14 +128,21 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildInputField(String label, TextEditingController controller, bool isPassword) {
+  Widget _buildInputField(
+    String label,
+    TextEditingController controller,
+    bool isPassword,
+  ) {
     return Container(
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: const TextStyle(fontSize: 20, color: Colors.white)),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 20, color: Colors.white),
+          ),
           const SizedBox(height: 8),
           TextField(
             controller: controller,
@@ -137,7 +151,10 @@ class _LoginPageState extends State<LoginPage> {
               labelText: isPassword ? 'Password' : 'Example@email.com',
               labelStyle: TextStyle(color: Colors.white.withAlpha(100)),
               focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.purpleAccent, width: 1.3),
+                borderSide: const BorderSide(
+                  color: Colors.purpleAccent,
+                  width: 1.3,
+                ),
                 borderRadius: BorderRadius.circular(8),
               ),
               enabledBorder: OutlineInputBorder(
