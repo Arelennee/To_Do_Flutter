@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class TaskRow extends StatelessWidget {
   final String task;
+  final VoidCallback? onEdit;
+  final VoidCallback? onDelete;
 
-  const TaskRow({super.key, required this.task});
+  const TaskRow({super.key, required this.task, this.onEdit, this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +17,12 @@ class TaskRow extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                Icon(Icons.check_box, color: Colors.deepPurpleAccent),
-                SizedBox(width: 8),
+                const Icon(Icons.check_box, color: Colors.deepPurpleAccent),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     task,
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    style: const TextStyle(color: Colors.white, fontSize: 14),
                   ),
                 ),
               ],
@@ -29,12 +31,15 @@ class TaskRow extends StatelessWidget {
           // ESTADO
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                 color: Colors.orange,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Text('PENDIENTE', style: TextStyle(color: Colors.white)),
+              child: const Text(
+                'PENDIENTE',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
           // ACCIONES
@@ -43,12 +48,12 @@ class TaskRow extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                  icon: Icon(Icons.edit, color: Colors.blue),
-                  onPressed: () {},
+                  icon: const Icon(Icons.edit, color: Colors.blue),
+                  onPressed: onEdit,
                 ),
                 IconButton(
-                  icon: Icon(Icons.delete, color: Colors.red),
-                  onPressed: () {},
+                  icon: const Icon(Icons.delete, color: Colors.red),
+                  onPressed: onDelete,
                 ),
               ],
             ),
